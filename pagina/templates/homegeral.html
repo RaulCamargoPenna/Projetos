@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+Portal Auto Equip
+{% endblock  %}
+
+{% block 'head' %}
+{% endblock%}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/baloes_msgm.css' %}" />
+<section style="min-height: 100vh;">
+</br>
+<div>
+    <h2 class="balao-mensagem gradient-animation">Olá {{ user.username }}, bem vindo ao portal! Aqui temos algumas informações gerais.</h2>
+</div>
+
+<div class="carrosel">
+    <ul>
+
+        <li>
+            <div class="div-metas">
+                <h1>Metas dos marketplaces</h1>
+            </div>
+        </li>
+
+        <li>
+            <div class="div-metas">  
+                <h1>teste 2</h1>
+            </div>
+        </li>
+
+        <li>
+            <div class="div-metas">
+                <h1>teste 3</h1>
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+<script>
+
+</script>
+
+</section>
+{% endblock  %}

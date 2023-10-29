@@ -1,0 +1,106 @@
+/* Balões gerais */
+
+.balao-mensagem {
+    color: black;
+    border-radius: 10px; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+    margin: 20px auto; 
+    position: relative; 
+    height: fit-content;
+    width: fit-content;
+    font-weight: bold;
+    text-align: center;
+    font-size: larger;
+    background-image: linear-gradient(45deg,#696969, #808080, #A9A9A9, #DCDCDC); 
+    background-size: 500% 100%;
+    animation: degrade-animado 3s infinite alternate;
+}
+
+@keyframes degrade-animado {
+    0%{
+        background-position-x: 0%;
+    }
+    100%{
+        background-position-x: 100%;
+    }
+}
+
+
+.balao-mensagem-sucesso {
+    background: linear-gradient(to bottom, #34ac299c, #ace790); 
+    border-radius: 10px; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+    color: #ffffff;
+    margin: 20px auto; 
+    position: relative; 
+    height: fit-content;
+    }
+  
+.balao-mensagem-erro {
+    background: linear-gradient(to bottom, #e21304a9, #d18451); 
+    border-radius: 10px; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+    color: #ffffff;
+    margin: 20px auto; 
+    position: relative; 
+    height: fit-content;
+    }
+
+
+/* Carrosel animado homepage */
+
+.carrosel{
+    width: 80%;
+    height: 60%;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 50px auto;
+    box-shadow: 10px 10px 15px rgb(0,0,0,0.7);
+    overflow: hidden;
+}
+
+.carrosel ul{
+    display: flex;
+    list-style: none;
+}
+
+.carrosel li {
+    position: relative;
+    animation: slide 15s infinite ease-out;
+}
+/* slide do carousel */
+@keyframes slide {
+    0%{left: 0px;}
+    20%{left: 0px;}
+
+    30%{left: -1601px;}
+    50%{left: -1601px;}
+
+    60%{left: -3201px;}
+    90%{left: -3201px;}
+
+    100%{left: 0px;}
+}
+/* Pausando o carousel caso o mouse esteja em cima */
+.carrosel:hover li {
+    animation-play-state: paused;
+}
+
+.div-metas{
+    background-image: linear-gradient(45deg,#696969, #808080, #A9A9A9, #DCDCDC); 
+    background-size: 500% 100%;
+    animation: degrade-animado 3s infinite alternate;
+    width: 1600px;
+    height: 600px;
+}
+
+.div-metas h1 {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+}
+
