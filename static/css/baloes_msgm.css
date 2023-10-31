@@ -69,18 +69,18 @@
 
 .carrosel li {
     position: relative;
-    /* animation: slide 15s infinite ease-out; */
+    animation: slide 15s infinite ease-out;
 }
 /* slide do carousel */
 @keyframes slide {
     0%{left: 0px;}
     20%{left: 0px;}
 
-    30%{left: -1601px;}
-    50%{left: -1601px;}
+    30%{left: -100%;}
+    50%{left: -100%;}
 
-    60%{left: -3201px;}
-    90%{left: -3201px;}
+    60%{left: -200%;}
+    90%{left: -200%;}
 
     100%{left: 0px;}
 }
@@ -95,6 +95,7 @@
     width: 100%;
     border-radius: 10px;
     background-color: transparent;
+    border-collapse: collapse;
 }
 
 
@@ -107,6 +108,7 @@
 background-color: black;
 color: white;
 text-align: center;
+border: 0.2px solid rgb(0,0,0,0.29); 
 }
 
 .tabela-400-altura tbody {
@@ -114,15 +116,17 @@ text-align: center;
     color: black;
     border-radius: 5px;
     text-align: center;
+    border: #696969;
 }
 
 .tabela-400-altura tbody td {
     padding: 5px;
+    border: 0.2px solid rgb(0,0,0,0.29); 
 }
 
 .celula-tabela-com-imagem {
     display: flex;
-    align-items: center; /* Alinhar verticalmente */
+    align-items: center; 
 }
 
 
@@ -146,41 +150,72 @@ text-align: center;
     display: flex;
     align-items: center;
     justify-content: center; 
-    height: 80%;
+    height: 89%;
     padding-top: 10px;
-    width: 90%;
+    width: 99%;
 }
 
 .left-column {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
     padding: 10px;
 }
 
 .right-column {
     flex: 1;
-    background-color:transparent; /* Exemplo de cor de fundo para a parte direita */
+    background-color:transparent; 
 }
 
 .half-container {
     display: flex;
-    flex-direction: column; /* Define a direção como coluna */
+    flex-direction: column;
     height: 100%;
-    align-items: center; /* Centraliza verticalmente os containers */
-    border: 1px solid black; /* Apenas para ilustração, você pode remover isso */
+    align-items: center;
     width: 100%;
 }
 
 .half {
-    flex: 1;
-    padding: 10px;
+    flex: 2;
     height: 50%;
 }
 
 .top-half {
-    background-color: #f0f0f0;
+    background-color: rgb(0,0,0,0.29);
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+}
 
+.half-produtos {
+    flex: 2;
+    background-color: rgb(0,0,0,0.29);
+    border-radius: 10px;
+    width: 90%;
+    height: 50%;
+    margin-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.half-produtos h1 {
+    font-weight: bold;
+    color: white;
 }
 
 .bottom-half {
     background-color: #e0e0e0;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+
+.teste *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%; 
+    max-height: 100%; 
+
 }
