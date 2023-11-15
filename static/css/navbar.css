@@ -132,3 +132,55 @@ main {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
+
+
+.notifications-icon-nav {
+  margin-left: auto;
+  margin-right: 50px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center; /* Para centralizar verticalmente o ícone */
+}
+
+.notifications-list-nav {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  background-color: black;
+  padding: 10px;
+  z-index: 1;
+  width: max-content;
+  right: 0;
+   
+}
+
+.nav-list-notificacao {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-list-notificacao li {
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.notifications-list-nav.active {
+  display: block !important;
+  top: 6vh;
+  right: 15vh;
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  justify-content: center;
+}
+
+/* .notifications-list-nav.active {
+  display: block !important;
+  position: relative;
+  top: 100%;
+  left: 0;
+  cursor: pointer;
+  background-color: black;
+} */

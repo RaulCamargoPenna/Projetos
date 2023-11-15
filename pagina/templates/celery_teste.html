@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+Portal Auto Equip
+{% endblock  %}
+
+{% block head %}
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/baloes_msgm.css' %}" />
+<section style="min-height: 100vh;">
+    </br>
+    <div>
+        <h2 class="balao-mensagem gradient-animation" id="notification">Olá {{ user.username }}, bem vindo ao portal! Aqui temos algumas informações gerais.</h2>
+        <h2 class="balao-mensagem gradient-animation" id="notificacao_tarefa">{{ user.username }}, <span id="notificacao_texto"></span></h2>
+    </div>
+
+    <form id="submit-form" class="space-x-2 flex flex-wrap mt-2 bg-gray-700 rounded-md">
+        {% csrf_token %}
+        <select class="bg-black" name="filial_autoequip_todos">
+            <option value="">Selecione a Filial</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+        </select>
+        <button type="button" id="submit-btn" class="bg-red-600 text-black my-1 mx-1 px-2 font-bold rounded-md">Atualizar todos</button>
+    </form>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var csrfToken = $('input[name=csrfmiddlewaretoken]').val();
+        var notificationDisplayed = false;
+    
+        $('#submit-btn').click(function () {
+            $.ajax({
+                url: '{% url "pagina:teste" %}',
+                type: 'POST',
+                dataType: 'json',
+                headers: {'X-CSRFToken': csrfToken}, 
+                success: function (data) {
+                    checkTaskStatus(data.task_id);
+                },
+            });
+        });
+    
+        function checkTaskStatus(taskId) {
+            $.ajax({
+                url: '/check_task_status/' + taskId + '/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    if (data.status === 'SUCCESS' && !notificationDisplayed) {
+                        var tarefa = $('#notificacao_tarefa');
+                        tarefa.addClass('mostrar-notificacao');
+                        $('#notificacao_texto').text('tarefa concluída! Resultado: ' + data.result + ' itens atualizados');
+                        notificationDisplayed = true;
+                    } else if (data.status === 'FAILURE') {
+                        alert('A tarefa falhou!');
+                    } else if (!notificationDisplayed) {
+                        setTimeout(function () {
+                            checkTaskStatus(taskId);
+                        }, 1000);  // Intervalo de 1 segundo
+                    }
+                },
+            });
+        }
+    });
+</script>
+
+{% endblock %}

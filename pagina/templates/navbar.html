@@ -2,10 +2,32 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <nav data-pause="True">
   <a class="logo" href="/"><img src="{% static 'images/logoredonda.png' %}" height="50" width="50"/>Portal Auto Equip</a>
+  <div class="notifications-icon-nav" id="notifications-icon-nav">
+    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="white" class="bi bi-bell-fill" viewBox="0 0 16 16">
+      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+    </svg>
+  </div>
+  
+  <div class="notifications-list-nav" id="notifications-list-nav">
+    <ul class="nav-list-notificacao">
+      <li>Nenhuma mensagem.</li>
+    </ul>
+    {% if messages %}
+    <ul class="nav-list-notificacao">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  
+
+
   <div class="mobile-menu">
     <div class="line1"></div>
     <div class="line2"></div>
     <div class="line3"></div>
+
 
     <ul class="nav-list">
       <li><a href="#">Início</a></li>
@@ -23,3 +45,4 @@
 </nav>
 
 <script src="{% static "js/navbar.js" %}"></script>
+
