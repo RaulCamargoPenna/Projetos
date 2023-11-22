@@ -15,7 +15,6 @@ Portal Auto Equip
     </br>
     <div>
         <h2 class="balao-mensagem gradient-animation" id="notification">Olá {{ user.username }}, bem vindo ao portal! Aqui temos algumas informações gerais.</h2>
-        <h2 class="balao-mensagem gradient-animation" id="notificacao_tarefa">{{ user.username }}, <span id="notificacao_texto"></span></h2>
     </div>
 
     <form id="submit-form" class="space-x-2 flex flex-wrap mt-2 bg-gray-700 rounded-md">
@@ -27,44 +26,48 @@ Portal Auto Equip
         </select>
         <button type="button" id="submit-btn" class="bg-red-600 text-black my-1 mx-1 px-2 font-bold rounded-md">Atualizar todos</button>
     </form>
+
+    
+
+    {% if notificacao %}
+        {{ notificacao}}
+    {% endif %}
 </section>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+
+    // Aqui eu preciso do token csrf para autenticar o fomulário (função que irá enviar a solicitação) usando ajax a eu chamo a classe Notificaçoes do usuários
+    // e uso o método post para enviar a tarefa que precisa ser feita passando o task id que irá ser usado na função de checkTaskStatus, a função checkTaskStatus usa a mesma classe porém
+    // a url é diferente pois leva a task id junto e o método dela é GET pois vai buscar no banco o status da tarefa!
     $(document).ready(function () {
         var csrfToken = $('input[name=csrfmiddlewaretoken]').val();
         var notificationDisplayed = false;
-    
+        
         $('#submit-btn').click(function () {
             $.ajax({
-                url: '{% url "pagina:teste" %}',
+                url: '{% url "pagina:Notificacoes_dos_usuarios" %}',
                 type: 'POST',
                 dataType: 'json',
                 headers: {'X-CSRFToken': csrfToken}, 
                 success: function (data) {
                     checkTaskStatus(data.task_id);
-                },
+               },
             });
         });
     
         function checkTaskStatus(taskId) {
             $.ajax({
-                url: '/check_task_status/' + taskId + '/',
+                url: '/Notificacoes_dos_usuarios/' + taskId + '/',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data)
                     if (data.status === 'SUCCESS' && !notificationDisplayed) {
-                        var tarefa = $('#notificacao_tarefa');
-                        tarefa.addClass('mostrar-notificacao');
-                        $('#notificacao_texto').text('tarefa concluída! Resultado: ' + data.result + ' itens atualizados');
                         notificationDisplayed = true;
-                    } else if (data.status === 'FAILURE') {
-                        alert('A tarefa falhou!');
                     } else if (!notificationDisplayed) {
                         setTimeout(function () {
                             checkTaskStatus(taskId);
-                        }, 1000);  // Intervalo de 1 segundo
+                        }, 10000);  // Intervalo de 10 segundo para verificar se a tarefa foi concluída
                     }
                 },
             });
