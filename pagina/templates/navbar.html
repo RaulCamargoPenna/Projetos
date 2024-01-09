@@ -9,15 +9,16 @@
 
     <ul class="nav-list">
       <li><a href="#">Início</a></li>
-      <li><a href="#">Fulfillment Mercado Livre</a></li>
-      <li><a href="#">Pós Vendas</a></li>
-      <li><a href="#">Cadastro de Metas</a></li>
-      <li><a href="#">Metas</a></li>
-      <li><a href="#">Compras</a></li>
-      <li><a href="#">Curva ABC</a></li>
-      <li><a href="#">Precificação</a></li>
-      <li><a href="#">Editar Perfil</a></li>
-      <li><a href="#">Logout</a></li>
+      <li><a href="{% url 'pagina:InformacoesFulfillment' %}">Fulfillment Mercado Livre</a></li>
+      <li><a href="{% url 'pagina:PosVendas' %}">Pós Vendas</a></li>
+      <li><a href="{% url 'pagina:Cadastro_metas_marketplaces' %}">Cadastro de Metas</a></li>
+      <li><a href="{% url 'pagina:MetasComercial' %}">Metas</a></li>
+      <li><a href="{% url 'pagina:Compras' %}">Compras</a></li>
+      <li><a href="{% url 'pagina:CurvaABC' %}">Curva ABC</a></li>
+      <li><a href="{% url 'pagina:dashboards' %}">Dashboards</a></li>
+      <li><a href="{% url 'pagina:precificacao' %}">Precificação</a></li>
+      <li><a href="{% url 'pagina:editarperfil' user.pk %}">Editar Perfil</a></li>
+      <li><a href="{% url 'pagina:logout' %}">Logout</a></li>
     </ul>
   </div>
 </nav>
