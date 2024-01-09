@@ -39,7 +39,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
-  background: #05050544;
+  background-color: rgba(0, 0, 0, 0.40);
   height: 8vh;
   padding: 0px 16px;
 }
@@ -83,7 +83,7 @@ main {
     right: 0;
     width: 15vw;
     height: 100vh;
-    background: #05050544;
+    background-color: rgba(0, 0, 0, 0.40);
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
@@ -131,4 +131,75 @@ main {
 
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
+}
+
+
+.notifications-icon-nav {
+  margin-left: auto;
+  margin-right: 50px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center; /* Para centralizar verticalmente o ícone */
+}
+
+.notifications-list-nav {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.40);
+  padding: 10px;
+  z-index: 1;
+  width: 30vh;
+  right: 0;
+  max-height: 50vh;
+  overflow-y: auto;
+   
+}
+
+.nav-list-notificacao {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  font-size: smaller;
+}
+
+.nav-list-notificacao li {
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.notifications-list-nav.active {
+  display: block !important;
+  top: 6vh;
+  right: 15vh;
+  background-color: rgba(0, 0, 0, 0.40);
+  border-radius: 10px;
+  color: white;
+  justify-content: center;
+}
+
+.icone-notificacao-n-lida {
+  position: absolute;
+  top: 0px;
+  right: 1px;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font: bold;
+}
+
+
+.marcar-lida-btn {
+  float: right;
+}
+
+.marcar-lida-btn:hover svg{
+  fill: green;
 }

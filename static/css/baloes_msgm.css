@@ -219,3 +219,12 @@ border: 0.2px solid rgb(0,0,0,0.29);
     max-height: 100%; 
 
 }
+
+#notificacao_tarefa {
+    display: none;
+    /* Outros estilos conforme necessário */
+}
+
+.mostrar-notificacao {
+    display: block !important; /* Utilize !important para garantir que a classe será aplicada */
+}
